@@ -1,13 +1,20 @@
-### Tp final Cours intégration continue
-### EISI I1A Groupe J - Mathieu COUROUBLE - Brian DELMAIRE - Quentin LEONARD
+# Tp final Cours intégration continue
+EISI I1A Groupe J - Mathieu COUROUBLE - Brian DELMAIRE - Quentin LEONARD
 
-### Github
-### Jenkins
-### Nexus
-### Docker
+### Technologies utilisées
+* Github
+* Jenkins
+* Nexus
+* Docker
+
+### Minimum attendu
+* build du code
+* exécution de tests unitaires (si le projet en fourni), et de tests statiques
+* génération d'un package
+* publication du package sur Nexus
 
 
-# simple-astronomy-lib
+# Projet utilisé : simple-astronomy-lib
 A simple and free astronomy library for calculating moon phases.
 
 A simple (and free) astronomy library for calculating moon phase, solar eclipses, etc. This is intended to be used as a library within other projects, thus the list of dependencies will remain as small as possible.
