@@ -1,3 +1,12 @@
+# Tp final Cours intégration continue
+# EISI I1A Groupe J - Mathieu COUROUBLE - Brian DELMAIRE - Quentin LEONARD
+
+# Github
+# Jenkins
+# Nexus
+# Docker
+
+
 # simple-astronomy-lib
 A simple and free astronomy library for calculating moon phases.
 
