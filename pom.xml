@@ -65,9 +65,20 @@
 	
 	<repositories>
         <repository>
-            <id>maven-astronomy-repository</id>
-            <url>http://localhost:8081/repository/maven-astronomy-repository/</url>
+            <id>maven-central</id>
+            <url>http://localhost:8081/repository/maven-central/</url>
         </repository>
     </repositories>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>nexus-snapshots</id>
+            <url>http://localhost:8081/repository/maven-snapshots/</url>
+        </snapshotRepository>
+        <repository>
+            <id>nexus-releases</id>
+            <url>http://localhost:8081/repository/maven-releases/</url>
+        </repository>
+    </distributionManagement>
 
 </project>
