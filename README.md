@@ -50,3 +50,10 @@ For a brief page on how to use this library, read the [Getting Started page](htt
   * ~~Initial code commit before April 1, 2011~~ DONE!
   * ~~Decent documentation on usage before June 30, 2011~~
   * Jenkins CI builds (Q2 2015)
+
+##  Problèmes Rencontrés 
+- Nous avons rencontrer des difficultés pour compilé et lancer le projet. En utilisant java 1.8 le projet se lance mais ne compile pas contrairement a java 17 où le projet ne se lance pas mais réussi a compiler. Il s'agit probablement d'un problème de configuration. Nous avons alors utilisé les deux version de java pour compilé et lancer le projet. 
+
+- Des problèmes de dépréciations ont également été présent. il manquais la librairie "org.hamcrest" que nous avons du rajouter.
+
+- Dans le jenkinsfile nous avons remplacé les commande "sh" par "bat" car nous utilisons windows et non linux. 
