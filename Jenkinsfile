@@ -21,7 +21,7 @@ def packaging = ''
 def version = ''
 
 // Variable utilisée pour savoir si c'est une RELEASE ou une SNAPSHOT
-def isSnapshot = true
+def isSnapshot = false
 
 pipeline {
    agent any
