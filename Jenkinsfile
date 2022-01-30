@@ -62,7 +62,6 @@ pipeline {
       Comme on pousse un Snapshot, on utilise le plugin deploy:deploy-file, cela permet de ne pas mettre les paramètres du Repo dans le pom.xml
       */
       stage('Push SNAPSHOT to Nexus') {
-         echo "SNAPSHOT"
           when { expression { isSnapshot } }
           steps {
               bat "mvn deploy:deploy-file -e -DgroupId=${groupId} -Dversion=${version} -Dpackaging=${packaging} -Durl=${nexusUrl}/repository/${nexusRepoSnapshot} -Dfile=${filepath} -DartifactId=${artifactId} -DrepositoryId=${mavenRepoId}"
@@ -75,7 +74,6 @@ pipeline {
      On pousse la release via le plugin Nexus
      */
       stage('Push RELEASE to Nexus') {
-         echo "RELEASE"
           when { expression { !isSnapshot } }
           steps {
             nexusPublisher nexusInstanceId: 'nexusLocal', nexusRepositoryId: "${nexusRepoRelease}", packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: "${filepath}"]], mavenCoordinate: [artifactId: "${artifactId}", groupId: "${groupId}", packaging: "${packaging}", version: "${version}"]]]
