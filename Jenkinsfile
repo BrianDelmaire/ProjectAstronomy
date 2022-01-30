@@ -14,11 +14,11 @@ def nexusRepoRelease = "maven-releases"
 
 
 /* *** Détail du projet, récupéré dans le pipeline en lisant le pom.xml *** */
-def groupId = ''
-def artefactId = ''
+def groupId = 'pom.com.bradsbrain'
+def artefactId = 'pom.SimpleAstronomyLib'
 def filePath = ''
 def packaging = ''
-def version = ''
+def version = 'pom.0.3.0'
 
 // Variable utilisée pour savoir si c'est une RELEASE ou une SNAPSHOT
 def isSnapshot = true
