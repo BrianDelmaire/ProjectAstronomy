@@ -64,6 +64,7 @@ pipeline {
       stage('Push SNAPSHOT to Nexus') {
           when { expression { isSnapshot } }
           steps {
+             echo "SNAPSHOT"
               bat "mvn deploy:deploy-file -e -DgroupId=${groupId} -Dversion=${version} -Dpackaging=${packaging} -Durl=${nexusUrl}/repository/${nexusRepoSnapshot} -Dfile=${filepath} -DartifactId=${artifactId} -DrepositoryId=${mavenRepoId}"
 
           }
@@ -76,6 +77,7 @@ pipeline {
       stage('Push RELEASE to Nexus') {
           when { expression { !isSnapshot } }
           steps {
+             echo "RELEASE"
             nexusPublisher nexusInstanceId: 'nexusLocal', nexusRepositoryId: "${nexusRepoRelease}", packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: "${filepath}"]], mavenCoordinate: [artifactId: "${artifactId}", groupId: "${groupId}", packaging: "${packaging}", version: "${version}"]]]
           }
       }
