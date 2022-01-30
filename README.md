@@ -18,7 +18,7 @@ EISI I1A Groupe J - Mathieu COUROUBLE - Brian DELMAIRE - Quentin LEONARD
 https://github.com/SimpleAstronomy/simple-astronomy-lib
 
 
-# Comppte rendu du projet
+# Compte rendu du projet
 
 ## Simple Astronomy
 
