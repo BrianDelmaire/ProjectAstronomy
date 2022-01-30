@@ -1,5 +1,5 @@
 // Lien vers Nexus, doit correspondre à l'instance paramétrée dans Jenkins
-def nexusId = 'nexus_localhost'
+def nexusId = 'NEXUS_CRED'
 
 /* *** Configuration de Nexus pour Maven ***/
 // URL de Nexus
@@ -16,7 +16,7 @@ def nexusRepoRelease = "maven-releases"
 /* *** Détail du projet, récupéré dans le pipeline en lisant le pom.xml *** */
 def groupId = 'pom.com.bradsbrain'
 def artefactId = 'pom.SimpleAstronomyLib'
-def filePath = ''
+def filePath = 'maven-astronomy-repository'
 def packaging = ''
 def version = 'pom.0.3.0'
 
