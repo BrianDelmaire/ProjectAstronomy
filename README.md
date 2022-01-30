@@ -47,7 +47,7 @@ La configuration du serveur Nexus sur Jenkins.
 - Nous avons rencontré des difficultés pour compiler et lancer le projet. Il s'agit d'un problème de version de Java, de notre configuration machine et de certaines dépendances qui étaient dépréciées. Nous avons alors utilisé la version 1.8 de Java. Par ailleurs nous avons suivi la documentation du projet pour exécuter le projet. 
 
 Cependant pour utiliser la librairie il fallait donc créer une classe.
-
+Voici le code de la documentation
 ![image](https://user-images.githubusercontent.com/57291078/151716178-5861d401-bb40-481c-9f79-450453c7b3f1.png)
 
 La méthode MoonPhaseFinder.findFullMoonFollowing prend pour paramètre un 'ZonedDateTime'. Un type Calendar était passé en argument.
