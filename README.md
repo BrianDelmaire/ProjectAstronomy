@@ -58,7 +58,7 @@ Voici notre code:
 - Des problèmes de dépréciations ont également été présents. il manquait la librairie "org.Hamcrest" que nous avons dû rajouter.
 - Dans le jenkinsfile nous avons remplacé les commandes "sh" par "bat" car nous utilisons Windows et non Linux.
 
-- Nous avons rencontré des problèmes de paramétrage entre Jenkins et Nexus. Problème de connexion, problème d'autorisation à déployer la solution en realese.
+- Nous avons rencontré des problèmes de paramétrage entre Jenkins et Nexus. Problème de connexion, problème d'autorisation à déployer la solution en release.
 Nous avons procédé à des modifications dans le fichier pom .xml, Jenkins file et .m2/settings.xml
 
 # Screenshots
