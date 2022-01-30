@@ -15,38 +15,65 @@ EISI I1A Groupe J - Mathieu COUROUBLE - Brian DELMAIRE - Quentin LEONARD
 
 
 # Projet utilisé : simple-astronomy-lib
-A simple and free astronomy library for calculating moon phases.
+https://github.com/SimpleAstronomy/simple-astronomy-lib
 
-A simple (and free) astronomy library for calculating moon phase, solar eclipses, etc. This is intended to be used as a library within other projects, thus the list of dependencies will remain as small as possible.
 
-Initial code based on the book [_Practical Astronomy with your Calculator_](http://amzn.to/1FXRxoi) by Peter Duffett-Smith. (If there are errors in the output it is due to my implementation and not because of that text.) The next book I plan to purchase is [_Practical Astronomy with Your Calculator or Spreadsheet_](http://amzn.to/1D7C8up) by the same author.
+# Compte rendu du projet
 
-NOTE: additional collaborators welcome
+## Simple Astronomy
 
-### Current Functionality
-Find dates for Moon Phases
- * full moon
- * new moon
- * first quarter
- * last quarter 
+La première chose réalisée était de récupérer en local le projet sélectionné par l'équipe.
 
-### Getting Started / Example
-For a brief page on how to use this library, read the [Getting Started page](https://github.com/dustmachine/simple-astronomy-lib/blob/wiki/GettingStartedExample.md)
+Nous avons tout d'abord exploré le code pour comprendre le fonctionnement du programme et également analyser le fichier pom.xml à la racine du projet.
 
-### Project Goals
-  * Minimize number of dependencies (useful for mobile device usage)
-  * Automated unit test coverage of more than 75% of code
-  * Accuracy to within 5 minutes (currently +/-15 minutes)
+Nous avons exécuter le projet et exécutons les tests.
 
-### New Features Under Consideration
-  * Sunrise / Sunset
-  * Rising and setting of other celestial objects
-  * Solar Eclipse - find date of next solar eclipse
-  * Lunar Eclipse - find date of next lunar eclipse
-  * Find location of sun or moon (right ascension, declination)
+Nous avons procédé à l'installation de Jenkins et Nexus.
 
-### Schedule
-  * ~~move the "Getting Started" example to GitHub~~
-  * ~~Initial code commit before April 1, 2011~~ DONE!
-  * ~~Decent documentation on usage before June 30, 2011~~
-  * Jenkins CI builds (Q2 2015)
+Nous avons modifié le pom.xml afin de pouvoir exécuter notre script Jenkins en adéquation.
+
+La création du ficher Jenkins (en parallèle)
+
+La configuration du fichier ~/.m2/settings.xml
+
+L'installation des différents plugins pour permettre le déploiement sur Nexus mais également pour la compilation de notre projet.
+
+La création d'un rôle sur Nexus qui va nous permettre de déployer via Jenkins.
+
+La configuration du serveur Nexus sur Jenkins.
+
+
+#  Problèmes Rencontrés 
+- Nous avons rencontré des difficultés pour compiler et lancer le projet. Il s'agit d'un problème de version de Java, de notre configuration machine et de certaines dépendances qui étaient dépréciées. Nous avons alors utilisé la version 1.8 de Java. Par ailleurs nous avons suivi la documentation du projet pour exécuter le projet. 
+
+Cependant pour utiliser la librairie il fallait donc créer une classe.
+Voici le code de la documentation
+![image](https://user-images.githubusercontent.com/57291078/151716178-5861d401-bb40-481c-9f79-450453c7b3f1.png)
+
+La méthode MoonPhaseFinder.findFullMoonFollowing prend pour paramètre un 'ZonedDateTime'. Un type Calendar était passé en argument.
+Voici notre code:
+![image](https://user-images.githubusercontent.com/57291078/151716265-708bdddb-ccaa-4ce1-a9c2-49b7c834af67.png)
+
+
+- Des problèmes de dépréciations ont également été présents. il manquait la librairie "org.Hamcrest" que nous avons dû rajouter.
+- Dans le jenkinsfile nous avons remplacé les commandes "sh" par "bat" car nous utilisons Windows et non Linux.
+
+- Nous avons rencontré des problèmes de paramétrage entre Jenkins et Nexus. Problème de connexion, problème d'autorisation à déployer la solution en release.
+Nous avons procédé à des modifications dans le fichier pom .xml, Jenkins file et .m2/settings.xml
+
+- Nous avons tenté de réaliser une image docker, que nous avons récupérée sur dockerhub (dockerfile sur la branche develop). Nous récupérons le JAR sur Nexus afin de le déployer sur un container docker avec tomcat.
+Nous avons encore des erreurs sur la compilation de notre dockerfile, lors du déploiement sur tomcat.
+
+# Screenshots
+
+![image](https://user-images.githubusercontent.com/57291078/151717043-651400e5-a9c5-4c73-884c-51c4140ae2e4.png)
+
+![image](https://user-images.githubusercontent.com/57291078/151717053-d06b72d5-5668-4c45-9125-4440bd850829.png)
+
+![image](https://user-images.githubusercontent.com/57291078/151717100-058606d2-de19-485d-a7b0-ae0de86d12ff.png)
+
+![image](https://user-images.githubusercontent.com/57291078/151717062-caec4437-62da-4e26-b0bb-583a8a9cb80e.png)
+
+![image](https://user-images.githubusercontent.com/57291078/151717067-4a54f39c-1a9f-4964-8066-83fa35bf75fb.png)
+
+![image](https://user-images.githubusercontent.com/57291078/151717077-5a7476e3-c4cb-426c-9ad6-d8b480b930b1.png)
