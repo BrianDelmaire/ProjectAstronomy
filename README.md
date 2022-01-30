@@ -61,6 +61,9 @@ Voici notre code:
 - Nous avons rencontré des problèmes de paramétrage entre Jenkins et Nexus. Problème de connexion, problème d'autorisation à déployer la solution en release.
 Nous avons procédé à des modifications dans le fichier pom .xml, Jenkins file et .m2/settings.xml
 
+- Nous avons tenté de réaliser une image docker, que nous avons récupérée sur dockerhub (dockerfile sur la branche develop). Nous récupérons le JAR sur Nexus afin de le déployer sur un container docker avec tomcat.
+Nous avons encore des erreurs sur la compilation de notre dockerfile, lors du déploiement sur tomcat.
+
 # Screenshots
 
 ![image](https://user-images.githubusercontent.com/57291078/151717043-651400e5-a9c5-4c73-884c-51c4140ae2e4.png)
