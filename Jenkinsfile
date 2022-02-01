@@ -1,5 +1,5 @@
 // Lien vers Nexus, doit correspondre à l'instance paramétrée dans Jenkins
-def nexusId = 'nexus_localhost'
+def nexusId = 'nexusLocal'
 
 /* *** Configuration de Nexus pour Maven ***/
 // URL de Nexus
@@ -29,7 +29,7 @@ pipeline {
    stages {
       stage('Checkout') {
          steps {
-            checkout([$class: 'GitSCM', branches: [[name: '*/develop']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/fhoubart/demo-cicd.git']]])
+            checkout([$class: 'GitSCM', branches: [[name: '*/develop']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/BrianDelmaire/ProjectAstronomy.git']]])
          }
       }
       stage('Get info from POM') {
@@ -64,7 +64,9 @@ pipeline {
       stage('Push SNAPSHOT to Nexus') {
           when { expression { isSnapshot } }
           steps {
-              bat "mvn deploy:deploy-file -e -DgroupId=${groupId} -Dversion=${version} -Dpackaging=${packaging} -Durl=${nexusUrl}/repository/${nexusRepoSnapshot} -Dfile=${filepath} -DartifactId=${artifactId} -DrepositoryId=${mavenRepoId}"
+             echo "SNAPSHOT"
+             echo "${isSnapshot}"
+             bat "mvn deploy:deploy-file -e -DgroupId=${groupId} -Dversion=${version} -Dpackaging=${packaging} -Durl=${nexusUrl}/repository/${nexusRepoSnapshot} -Dfile=${filepath} -DartifactId=${artifactId} -DrepositoryId=${mavenRepoId}"
 
           }
       }
@@ -76,7 +78,9 @@ pipeline {
       stage('Push RELEASE to Nexus') {
           when { expression { !isSnapshot } }
           steps {
-            nexusPublisher nexusInstanceId: 'nexus_localhost', nexusRepositoryId: "${nexusRepoRelease}", packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: "${filepath}"]], mavenCoordinate: [artifactId: "${artifactId}", groupId: "${groupId}", packaging: "${packaging}", version: "${version}"]]]
+             echo "RELEASE"
+             echo "${isSnapshot}"
+            nexusPublisher nexusInstanceId: 'nexusLocal', nexusRepositoryId: "${nexusRepoRelease}", packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: "${filepath}"]], mavenCoordinate: [artifactId: "${artifactId}", groupId: "${groupId}", packaging: "${packaging}", version: "${version}"]]]
           }
       }
    }
