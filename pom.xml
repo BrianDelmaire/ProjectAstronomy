@@ -69,6 +69,18 @@
             <id>maven-central</id>
             <url>http://localhost:8081/repository/maven-central/</url>
         </repository>
+
+        <repository>
+            <id>briandelmaire</id>
+            <url>https://pkgs.dev.azure.com/briandelmaire/_packaging/briandelmaire/maven/v1</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+
     </repositories>
 
     <distributionManagement>
